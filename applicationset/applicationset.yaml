@@ -22,7 +22,7 @@ spec:
     spec:
       project: default
       source:
-        repoURL: https://github.com/jeevanions/app-collection.git
+        repoURL: '{{repoURL}}'
         targetRevision: main
         path: '{{path}}'
       destination:
