@@ -13,7 +13,7 @@ spec:
   source:
     repoURL: https://github.com/jeevanions/argocd-app.git
     targetRevision: main
-    path: /applicationset/
+    path: applicationset/
   destination:
     server: https://kubernetes.default.svc
     namespace: argocd
