@@ -3,7 +3,7 @@ kind: Application
 metadata:
   name: top-level-app
   # You'll usually want to add your resources to the argocd namespace.
-  namespace: default
+  namespace: argocd
   # Add a this finalizer ONLY if you want these to cascade delete.
   finalizers:
     - resources-finalizer.argocd.argoproj.io
@@ -11,9 +11,9 @@ spec:
   # The project the application belongs to.
   project: default
   source:
-    repoURL: https://github.com/xsreality/argocd-applicationset-demo.git
-    targetRevision: argocd-applicationsets
-    path: applicationsets
+    repoURL: https://github.com/jeevanions/argocd-app.git
+    targetRevision: main
+    path: applicationset
   destination:
     server: https://kubernetes.default.svc
     namespace: argocd
