@@ -10,6 +10,12 @@ spec:
       revision: main
       directories:
       - path: apps/*
+  - git:
+      repoURL: https://github.com/jeevanions/third-app.git
+      revision: main
+      directories:
+      - path: apps/*
+      
   template:
     metadata:
       name: '{{path.basename}}'
