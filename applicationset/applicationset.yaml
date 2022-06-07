@@ -9,7 +9,7 @@ spec:
       repoURL: https://github.com/jeevanions/app-collection.git
       revision: main
       directories:
-      - path: /*
+      - path: apps/*
   template:
     metadata:
       name: '{{path[0]}}'
