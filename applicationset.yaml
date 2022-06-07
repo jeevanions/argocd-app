@@ -1,0 +1,24 @@
+# https://argocd-applicationset.readthedocs.io/en/stable/
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: as-cluster-addons
+spec:
+  generators:
+  - git:
+      repoURL: https://github.com/jeevanions/app-collection.git
+      revision: HEAD
+      directories:
+      - path: /*
+  template:
+    metadata:
+      name: '{{path[0]}}'
+    spec:
+      project: default
+      source:
+        repoURL: https://github.com/jeevanions/app-collection.git
+        targetRevision: HEAD
+        path: '{{path}}'
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: 'default'
