@@ -7,7 +7,7 @@ spec:
   generators:
   - git:
       repoURL: https://github.com/jeevanions/app-collection.git
-      revision: HEAD
+      revision: main
       directories:
       - path: /*
   template:
@@ -17,7 +17,7 @@ spec:
       project: default
       source:
         repoURL: https://github.com/jeevanions/app-collection.git
-        targetRevision: HEAD
+        targetRevision: main
         path: '{{path}}'
       destination:
         server: https://kubernetes.default.svc
