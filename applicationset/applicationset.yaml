@@ -30,7 +30,7 @@ spec:
       
   template:
     metadata:
-      name: '{{strings.Split(path,"/")._1}}'
+      name: '{{strings.Split(path,"/")[1]}}'
     spec:
       project: default
       source:
@@ -39,4 +39,4 @@ spec:
         path: '{{path}}'
       destination:
         server: https://kubernetes.default.svc
-        namespace: '{{strings.Split(path,"/")._1}'
+        namespace: '{{strings.Split(path,"/")[1]}'
