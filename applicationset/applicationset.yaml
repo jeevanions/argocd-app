@@ -39,4 +39,4 @@ spec:
         path: '{{path}}'
       destination:
         server: https://kubernetes.default.svc
-        namespace: '{{strings.Split(path,"/")[1]}'
+        namespace: '{{strings.Split(path,"/")[1]}}'
