@@ -5,26 +5,38 @@ metadata:
   name: as-cluster-addons
 spec:
   generators:
-  - git:
-      repoURL: https://github.com/jeevanions/app-collection.git
-      revision: main
-      directories:
-      - path: apps/*
-  - git:
-      repoURL: https://github.com/jeevanions/third-app.git
-      revision: main
-      directories:
-      - path: apps/*
+  - list:
+      elements:
+      - repoURL: https://github.com/jeevanions/app-collection.git      
+        path: apps/application1
+        revision: main
+      - repoURL: https://github.com/jeevanions/app-collection.git
+        path: apps/application2
+        revision: main
+      - repoURL: https://github.com/jeevanions/third-app.git
+        path: apps/application2
+        revision: main
+
+  # - git:
+  #     repoURL: https://github.com/jeevanions/app-collection.git
+  #     revision: main
+  #     directories:
+  #     - path: apps/*
+  # - git:
+  #     repoURL: https://github.com/jeevanions/third-app.git
+  #     revision: main
+  #     directories:
+  #     - path: apps/*
       
   template:
     metadata:
-      name: '{{path.basename}}'
+      name: '{{(split "/" path)._1}}'
     spec:
       project: default
       source:
         repoURL: '{{repoURL}}'
-        targetRevision: main
+        targetRevision: '{{revision}}'
         path: '{{path}}'
       destination:
         server: https://kubernetes.default.svc
-        namespace: '{{path.basename}}'
+        namespace: '{{{{(split "/" path)._1}}}}'
