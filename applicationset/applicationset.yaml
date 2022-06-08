@@ -10,12 +10,18 @@ spec:
       - repoURL: https://github.com/jeevanions/app-collection.git      
         path: apps/application1
         revision: main
+        name: application1
+        namespace: application1
       - repoURL: https://github.com/jeevanions/app-collection.git
         path: apps/application2
         revision: main
+        name: application2
+        namespace: application2
       - repoURL: https://github.com/jeevanions/third-app.git
         path: apps/application3
         revision: main
+        name: application3
+        namespace: application3
 
   # - git:
   #     repoURL: https://github.com/jeevanions/app-collection.git
@@ -30,7 +36,7 @@ spec:
       
   template:
     metadata:
-      name: '{{strings.Split(path,"/")[1]}}'
+      name: '{{name}}'
     spec:
       project: default
       source:
@@ -39,4 +45,4 @@ spec:
         path: '{{path}}'
       destination:
         server: https://kubernetes.default.svc
-        namespace: '{{strings.Split(path,"/")[1]}}'
+        namespace: 'namespace'
